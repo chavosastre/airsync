@@ -42,7 +42,31 @@
             <td><?php echo $consulta['Nombre']?></td>
             <td><?php echo $consulta['Dron']?></td>
             <td><?php echo $consulta['FechaPrestamo']?></td>
-            <td><?php echo $consulta['FechaEntrega']?></td>
+            <td>
+            <?php
+            $ficha = $consulta['Id'];
+                if($consulta['FechaEntrega'] == null)
+                {
+                    
+                    echo"  <form action=\"recibe.php\" method=\"post\">";
+                    echo "<button class=\"login100-form-btn\" type=\"submit\" value=\"$ficha\" name=\"Boton\">Recibir</button>";
+                ?>
+                </form>
+                <?php
+                }
+                else
+                {           
+                    echo $consulta['FechaEntrega']; 
+                }
+            ?>
+            </td>
+            <td>
+            <?php
+                echo"  <form action=\"edita.php\" method=\"post\">";
+                echo "<button class=\"login100-form-btn\" type=\"submit\" value=\"$ficha\" name=\"Edita\">Editar</button>";
+            ?>
+            </form>
+            </td>
         </tr>
         <?php
         }
