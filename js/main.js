@@ -52,6 +52,7 @@
         $(thisAlert).removeClass('alert-validate');
     }
     
-    
+    var url_php = 'http://localhost/airsync/ajax/procesar_registro.php';
+    $.ajax
 
 })(jQuery);

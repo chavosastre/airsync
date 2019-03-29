@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>AirSync Login</title>
-	<meta charset="UTF-8">
+	<title>AirSync Datos</title>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -16,45 +18,88 @@
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
-	<div class="limiter">
-		<div class="container-login100" >
-			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
-				<form class="login100-form validate-form flex-sb flex-w" action="verifica_usuario.php" method="post">
-					<span class="login100-form-title p-b-53">
-						<img src="images/Airsync-logo_negro.png" alt="AirSync"  width="150" height="150">
-					</span>
-
-					<div class="p-t-31 p-b-9">
+<div class="container">
+    </br>
+    <h1 align="center">Historial de Préstamos</h1>      
+    </br>  
+    <table class="table table-hover" style="font-size:18px">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Dron</th>
+            <th>Fecha Préstamo</th>
+            <th>Fecha Entrega</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+            include ("inc/config.php");
+            $result = mysqli_query($conexion,"Select * from prestamos");
+            while($consulta = mysqli_fetch_array($result))
+            {
+        ?>
+        <tr>
+            <td><?php echo $consulta['Nombre']?></td>
+            <td><?php echo $consulta['Dron']?></td>
+            <td><?php echo $consulta['FechaPrestamo']?></td>
+            <td><?php echo $consulta['FechaEntrega']?></td>
+        </tr>
+        <?php
+        }
+        ?>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <div class="container-login100-form-btn m-t-17">
+		<button class="login100-form-btn" type="submit" onclick="toggle_visibility('foo');">
+            Agregar Registro
+		</button>
+	</div>
+    <div id="foo" style="display:none;">
+        <form  class="login100-form validate-form flex-sb flex-w" action="agrega_registro.php" method="post">
+        <div class="p-t-31 p-b-9">
 						<span class="txt1">
-							Username
+							Nombre
 						</span>
 					</div>
-					<div class="wrap-input100 validate-input" data-validate = "Usuario requerido">
-						<input class="input100" type="text" name="username" >
+					<div class="wrap-input100 validate-input" data-validate = "Campo requerido">
+						<input class="input100" type="text" name="nombre" >
 						<span class="focus-input100"></span>
 					</div>
 					
 					<div class="p-t-13 p-b-9">
 						<span class="txt1">
-							Password
+							Dron
 						</span>
 					</div>
-					<div class="wrap-input100 validate-input" data-validate = "Password requerido">
-						<input class="input100" type="password" name="pass" >
+					<div class="wrap-input100 validate-input" data-validate = "Campo requerido">
+						<input class="input100" type="text" name="dron" >
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="container-login100-form-btn m-t-17">
 						<button class="login100-form-btn" type="submit">
-							Login
+							Guardar
 						</button>
 					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+        </form>
+    </div>
+</div>
 
 
+
+<script type="text/javascript">
+<!--
+function toggle_visibility(id) {
+var e = document.getElementById(id);
+if(e.style.display == 'block')
+e.style.display = 'none';
+else
+e.style.display = 'block';
+}
+//-->
+</script>
 	<div id="dropDownSelect1"></div>
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -71,6 +116,10 @@
 <!--===============================================================================================-->
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="js/main.js"></script>
+    <script src="js/main.js"></script>
+    
+<?php
+    include ("inc/cerrar.php");
+?>
 </body>
 </html>

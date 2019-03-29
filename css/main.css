@@ -1,7 +1,5 @@
 
 
-
-
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
 
@@ -175,7 +173,6 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;;
@@ -331,7 +328,7 @@ iframe {
   top: -1px;
   left: -1px;
   pointer-events: none;
-  border: 1px solid #fc00ff;
+  border: 2px solid red;
   border-radius: 10px;
 
   visibility: hidden;
@@ -518,10 +515,11 @@ iframe {
   .wrap-login100 {
     padding-left: 15px;
     padding-right: 15px;
-  }
+    }
 
   .btn-face,
   .btn-google {
     width: 100%;
   }
 }
+
