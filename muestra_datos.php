@@ -21,7 +21,9 @@
 <div class="container">
     </br>
     <div class="container-fluid text-right">
-		<button type="button" class="btn btn-light"><img src="images/Drone.png" width="50px"/></button>
+        <form action="drones.php" method="post">
+            <button type="submit" class="btn btn-light"><img src="images/Drone.png" width="50px"/></button>
+        </form>
 	</div>
     <h1 align="center">Préstamos</h1>      
     </br>  
