@@ -23,10 +23,17 @@
     $nombre = $_POST['nombre'];
     $dron = $_POST['dron'];
     $fecha = date("Y-m-d");
-    //echo $fecha;
-    $conexion->query("insert into prestamos (Nombre, Dron, FechaPrestamo) values ('$nombre','$dron','$fecha')"); 
-    //$result = mysqli_query($conexion,"Select count(*) from usuarios where email = '$user' and password = '$pass'");
-    //$consulta = mysqli_fetch_array($result);
+	// echo $dron;
+	// Buscamos el nombre del dron
+	$result = mysqli_query($conexion,"Select Nombre from drones where Serie  = '$dron'");
+	$consulta = mysqli_fetch_array($result);
+	
+	$nombredron = $consulta['Nombre'];
+
+	$conexion->query("insert into prestamos (Nombre, Dron, FechaPrestamo, Serie, FechaEntrega) values ('$nombre','$nombredron','$fecha', '$dron', null)"); 
+
+	$conexion->query("UPDATE `drones` SET `prestado`= true WHERE Serie = '$dron'"); 
+	
     header('Location: muestra_datos.php');
     
     include ("inc/cerrar.php");

@@ -23,7 +23,16 @@
     $id = $_POST['Boton'];
     $fecha = date("Y-m-d");
     //echo $id." ".$fecha;
-    $conexion->query("update prestamos set FechaEntrega = '$fecha' where Id = $id"); 
+	$conexion->query("update prestamos set FechaEntrega = '$fecha' where Id = $id"); 
+	
+	$result = mysqli_query($conexion,"Select Serie from prestamos where Id  = '$id'");
+	$consulta = mysqli_fetch_array($result);
+	
+	$serie = $consulta['Serie'];
+echo $serie;
+	
+	$conexion->query("UPDATE `drones` SET `prestado`= false WHERE Serie = '$serie'"); 
+	
     header('Location: muestra_datos.php');
     
     include ("inc/cerrar.php");

@@ -20,7 +20,10 @@
 <body>
 <div class="container">
     </br>
-    <h1 align="center">Historial de Préstamos</h1>      
+    <div class="container-fluid text-right">
+		<button type="button" class="btn btn-light">Historial</button>
+	</div>
+    <h1 align="center">Préstamos</h1>      
     </br>  
     <table class="table table-hover" style="font-size:18px">
         <thead>
@@ -28,13 +31,14 @@
             <th>Nombre</th>
             <th>Dron</th>
             <th>Fecha Préstamo</th>
-            <th>Fecha Entrega</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
         <?php
             include ("inc/config.php");
-            $result = mysqli_query($conexion,"Select * from prestamos");
+
+            $result = mysqli_query($conexion,"Select * from prestamos where FechaEntrega is null");
             while($consulta = mysqli_fetch_array($result))
             {
         ?>
@@ -62,10 +66,10 @@
             </td>
             <td>
             <?php
-                echo"  <form action=\"edita.php\" method=\"post\">";
-                echo "<button class=\"login100-form-btn\" type=\"submit\" value=\"$ficha\" name=\"Edita\">Editar</button>";
+                // echo"  <form action=\"edita.php\" method=\"post\">";
+                // echo "<button class=\"login100-form-btn\" type=\"submit\" value=\"$ficha\" name=\"Edita\">Editar</button>";
             ?>
-            </form>
+            <!-- </form> -->
             </td>
         </tr>
         <?php
@@ -98,8 +102,15 @@
 						</span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "Campo requerido">
-						<input class="input100" type="text" name="dron" >
-						<span class="focus-input100"></span>
+						<!-- <input class="input100" type="text" name="dron" >
+                        <span class="focus-input100"></span> -->
+                        <?php
+                            $query = mysqli_query($conexion,"Select Serie, Nombre from drones where prestado = false");
+                            echo("<select name=\"dron\" class=\"select100\">");
+                            while ($valores = mysqli_fetch_array($query)) {
+                                echo '<option value="'.$valores[Serie].'">'.$valores[Nombre].'</option>';
+                            }
+                            echo("</select>"); ?>
 					</div>
 
 					<div class="container-login100-form-btn m-t-17">

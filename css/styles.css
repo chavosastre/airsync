@@ -317,6 +317,18 @@ iframe {
   height: 60px;
   padding: 0 20px;
 }
+
+.select100 {
+  font-family: Poppins-Regular;
+  color: #333333;
+  line-height: 1.2;
+  font-size: 18px;
+
+
+  width: 100%;
+  background: transparent;
+  height: 60px;
+}
 /*------------------------------------------------------------------
 [ Focus Input ]*/
 
