@@ -4,36 +4,27 @@
 <head>
 	<title></title>
 	<meta charset="UTF-8">
-	<!-- <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css"> -->
 </head>
 <body>
 
 <?php
     include ("inc/config.php");
-    $id = $_POST['Boton'];
+    $id = $_POST['miId'];
     $fecha = date("Y-m-d");
-    //echo $id." ".$fecha;
-	$conexion->query("update prestamos set FechaEntrega = '$fecha' where Id = $id"); 
+    $comentario = $_POST['comentario'];
+	
+  echo $id." ".$comentario." ".$fecha;
+	$conexion->query("UPDATE `prestamos` SET `FechaEntrega`='$fecha',`Comentarios`='$comentario' WHERE Id = '$id'"); 
 	
 	$result = mysqli_query($conexion,"Select Serie from prestamos where Id  = '$id'");
 	$consulta = mysqli_fetch_array($result);
 	
 	$serie = $consulta['Serie'];
-echo $serie;
+  echo "</br>".$serie;
 	
 	$conexion->query("UPDATE `drones` SET `prestado`= false WHERE Serie = '$serie'"); 
 	
-    header('Location: muestra_datos.php');
+  header('Location: muestra_datos.php');
     
     include ("inc/cerrar.php");
 ?>

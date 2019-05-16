@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -54,23 +55,25 @@
                             $ficha = $consulta['Id'];
                             if ($consulta['FechaEntrega'] == null) {
 
-                                echo "  <form action=\"recibe.php\" method=\"post\">";
-                                echo "<button class=\"login100-form-btn\" type=\"submit\" value=\"$ficha\" name=\"Boton\">Recibir</button>";
+                                // echo "  <form action=\"recibe.php\" method=\"post\">";
+                                // echo "<button class=\"login100-form-btn\" type=\"submit\" id=\"$ficha\" name=\"Boton\">Recibir</button>";
                                 ?>
-                                </form>
+                                <button class="login100-form-btn" id="recibe" data-id="<?php echo $ficha ?>" name="Boton" onclick="toggle_visibility('foo2');">Recibir</button>
+                                <!-- </form> -->
+                                <!-- <button id="btnCancelarFactura" class="btn btn-warning" data-id="2">1...</button> -->
                             <?php
                         } else {
                             echo $consulta['FechaEntrega'];
                         }
                         ?>
                         </td>
-                        <td>
+                        <!-- <td>
                             <?php
                             // echo"  <form action=\"edita.php\" method=\"post\">";
                             // echo "<button class=\"login100-form-btn\" type=\"submit\" value=\"$ficha\" name=\"Edita\">Editar</button>";
-                            ?>
-                            <!-- </form> -->
-                        </td>
+                            // ?>
+                            </form>
+                        </td> -->
                     </tr>
                 <?php
             }
@@ -92,7 +95,7 @@
                     </span>
                 </div>
                 <div class="wrap-input100 validate-input" data-validate="Campo requerido">
-                    <input class="input100" type="text" name="nombre">
+                    <input class="input100 nombre" type="text" name="nombre" id="nombre">
                     <span class="focus-input100"></span>
                 </div>
 
@@ -123,6 +126,28 @@
     </div>
 
 
+    <div class="container">
+        <div id="foo2" style="display:none;">
+            <form class="login100-form validate-form flex-sb flex-w" action="recibe.php" method="post">
+                <div class="p-t-31 p-b-9">
+                    <span class="txt1">
+                        Comentario
+                    </span>
+                </div>
+                <div class="wrap-input100">
+                    <input class="input100 comentario" type="text" name="comentario" id="comentario" value="">
+                    <span class="focus-input100"></span>
+                </div>
+                <input class="miId" type="hidden" name="miId" id="miId" value="">
+
+                <div class="container-login100-form-btn m-t-17">
+                    <button class="login100-form-btn" type="submit">
+                        Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <script type="text/javascript">
         <!--
@@ -135,6 +160,17 @@
         }
         //-->
     </script>
+
+
+<!-- <button id="btnCancelarFactura" class="btn btn-warning" data-id=".678">5...</button>
+<button id="btnCancelarFactura" class="btn btn-warning" data-id=".012">9...</button> -->
+<script>
+$('button[id=recibe]').on('click',function () {
+//   alert($(this).data("id"));
+  $("#miId").val($(this).data("id"));
+  $("#nombre").val($(this).data("id"));
+});
+</script>
     <div id="dropDownSelect1"></div>
     <!--===============================================================================================-->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
