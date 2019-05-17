@@ -53,8 +53,11 @@
                         <h4 class="card-title"><?php echo($fila['Nombre']); ?></h4>
                         <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
                         <!-- <a href="#" class="btn btn-primary">Historial</a> -->
-                        <form action="historial_dron.php" method="post">
+                        <form action="historial_dron.php" method="post" style="float: left">
                             <button class="btn btn-primary" type="submit" value="<?php echo($fila['Serie']); ?>" name="Boton">Historial</button>
+                        </form>
+                        <form action="dron_revisiones.php" method="post" style="float: left">
+                            <button class="btn btn-primary" type="submit" value="<?php echo($fila['Serie']); ?>" name="BtnRevision">Revision</button>
                         </form>
                     </div>
                 </div>
