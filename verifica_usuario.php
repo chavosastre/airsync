@@ -22,11 +22,16 @@
 
     $user = $_POST['username'];
     $pass = $_POST['pass'];
-    $result = mysqli_query($conexion,"Select count(*) from usuarios where email = '$user' and password = '$pass'");
+    $result = mysqli_query($conexion,"Select Nombre, Apellidos from usuarios where email = '$user' and password = '$pass'");
     $consulta = mysqli_fetch_array($result);
-    //echo $consulta[0];
-    if($consulta[0] == 1)
+    // echo $consulta[0];
+	if(isset($consulta[0]))
     {
+		session_start();
+		/*session is started if you don't write this line can't use $_Session  global variable*/
+		$_SESSION["nombre"] = $consulta[0];
+		$_SESSION["apellidos"] = $consulta[1]; 
+
         header('Location: muestra_datos.php');
     }
     else
@@ -38,7 +43,23 @@
 			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
 				<form class="login100-form validate-form flex-sb flex-w" action="index.php" method="post">
 					<span class="login100-form-title p-b-53">
-                        <img class="center-block" src="images/tenor.gif" alt="NO"  width="300">
+						<?php
+							if($user == "rmendoza@ecopulse.mx")
+							{
+						?>
+							<img class="center-block" src="images/tenor.gif" alt="NO"  width="300">
+						<?php
+							}
+							else
+							{
+								?>
+								<img class="center-block" src="images/user_error.png" alt="NO"  width="300">
+								<h3>Datos incorrectos, favor de verificar</h3>
+							<?php
+							}
+						?>	
+						
+
                     </span>
                     <div class="container-login100-form-btn m-t-17">
 						<button class="login100-form-btn" type="submit">

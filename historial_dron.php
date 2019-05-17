@@ -16,27 +16,40 @@
 </head>
 
 <body>
+    <?php
+    session_start();
+    ?>
     <div class="container">
         </br>
         <div class="container-fluid text-right">
+            <h4 class="negrita"> <?php echo $_SESSION["nombre"] . " " . $_SESSION["apellidos"] . " "; ?></span></h4>
             <a href="muestra_datos.php">
                 <img src="images/Airsync-logo_negro.png" width="40px" />
             </a>
             <a href="drones.php">
                 <img src="images/Drone.png" width="70px" />
             </a>
+            <a href="loginout.php">
+                <img src="images/cerrar-sesion.png" width="30px" alt="Cerrar Sesion" />
+            </a>
         </div>
         </br>
         <?php
-            include ("inc/config.php");
-            $serie = $_POST['Boton'];
-            $result = mysqli_query($conexion, "Select Nombre from drones where Serie = '$serie'");
-            $result->data_seek(0);
-            $fila = $result->fetch_assoc();
-            
+        include("inc/config.php");
+        $serie = $_POST['Boton'];
+        $result = mysqli_query($conexion, "Select Nombre from drones where Serie = '$serie'");
+        $result->data_seek(0);
+        $fila = $result->fetch_assoc();
+
         ?>
-                <h1 align="center">Historial <?php echo $fila['Nombre']; ?></h1>
+        <h1 align="center">Historial <?php echo $fila['Nombre']; ?></h1>
         </br>
+        <div class="container-login100-form-btn m-t-17">
+            <form class="login100-form validate-form flex-sb flex-w" action="dron_revisiones.php" method="post" style="float: left">
+                <button class="login100-form-btn" type="submit" value="<?php echo ($serie); ?>" name="BtnRevision">Inspecciones</button>
+            </form>
+        </div>
+
         <table class="table table-hover" style="font-size:18px">
             <thead>
                 <tr>
@@ -45,7 +58,6 @@
                     <th>Fecha Préstamo</th>
                     <th>Fecha Entrega</th>
                     <th>Observaciones</th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -61,7 +73,6 @@
                         <td><?php echo $consulta['FechaPrestamo'] ?></td>
                         <td><?php echo $consulta['FechaEntrega'] ?></td>
                         <td><?php echo $consulta['Comentarios'] ?></td>
-                        <td></td>
                     </tr>
                 <?php
             }

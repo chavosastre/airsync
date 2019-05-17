@@ -21,11 +21,18 @@
 </head>
 
 <body>
+<?php
+        session_start();
+    ?>
     <div class="container">
         </br>
         <div class="container-fluid text-right">
+            <h4>Bienvenido <span class="negrita"> <?php echo $_SESSION["nombre"]." ".$_SESSION["apellidos"]." "; ?></span></h4>
             <a href="drones.php">
-                <img src="images/Drone.png" width="70px" />
+                <img src="images/Drone.png" width="70px" alt="Ver Drones"/>
+            </a>
+            <a href="loginout.php">
+                <img src="images/cerrar-sesion.png" width="30px" alt="Cerrar Sesion"/>
             </a>
         </div>
         <h1 align="center">Préstamos</h1>

@@ -16,14 +16,21 @@
 </head>
 
 <body>
+<?php
+    session_start();
+    ?>
     <div class="container">
         </br>
         <div class="container-fluid text-right">
+        <h4 class="negrita"> <?php echo $_SESSION["nombre"] . " " . $_SESSION["apellidos"] . " "; ?></span></h4>
             <a href="muestra_datos.php">
                 <img src="images/Airsync-logo_negro.png" width="40px" />
             </a>
             <a href="drones.php">
                 <img src="images/Drone.png" width="70px" />
+            </a>
+            <a href="loginout.php" >
+                <img src="images/cerrar-sesion.png" width="30px" alt="Cerrar Sesion" />
             </a>
         </div>
         </br>
@@ -43,11 +50,11 @@
             $fila = $result->fetch_assoc();
             
         ?>
-                <h1 align="center">Revisiones <?php echo $fila['Nombre']; ?></h1>
+                <h1 align="center">Inspecciones <?php echo $fila['Nombre']; ?></h1>
         </br>
         <div class="container-login100-form-btn m-t-17">
             <button class="login100-form-btn" type="submit" onclick="toggle_visibility('foo');">
-                Agregar Revisión
+                Agregar Inspección
             </button>
         </div>
         </br>
