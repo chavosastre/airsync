@@ -42,7 +42,7 @@ a {
 	font-family: Poppins-Regular;
 	font-size: 14px;
 	line-height: 1.7;
-	color: #666666;
+	color: black;
 	margin: 0px;
 	transition: all 0.4s;
 	-webkit-transition: all 0.4s;
@@ -56,8 +56,8 @@ a:focus {
 
 a:hover {
 	text-decoration: none;
-  color: #fc00ff;
-  border-color: #fc00ff;
+  color: black;
+  border-color: black;
 }
 
 
