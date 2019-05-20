@@ -21,8 +21,11 @@
     include ("inc/config.php");
 
     $user = $_POST['username'];
-    $pass = $_POST['pass'];
-    $result = mysqli_query($conexion,"Select Nombre, Apellidos from usuarios where email = '$user' and password = '$pass'");
+	$passcode = sha1($_POST['pass']);
+	
+	//  $passcode =  sha1($pass);
+
+    $result = mysqli_query($conexion,"Select Nombre, Apellidos from usuarios where email = '$user' and password = '$passcode'");
     $consulta = mysqli_fetch_array($result);
     // echo $consulta[0];
 	if(isset($consulta[0]))

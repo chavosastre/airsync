@@ -27,7 +27,23 @@
     <div class="container">
         </br>
         <div class="container-fluid text-right">
-            <h4>Bienvenido <span class="negrita"> <?php echo $_SESSION["nombre"]." ".$_SESSION["apellidos"]." "; ?></span></h4>
+            <h4>Bienvenido 
+                <span class="negrita"> 
+                    <?php
+                        if($_SESSION["nombre"] === 'Salvador')
+                        { ?>
+                           <a href="agregaUser.php" target="_blank" rel="noopener noreferrer"><?php echo $_SESSION["nombre"]." ".$_SESSION["apellidos"]." "; ?></a>
+                           <?php }
+                           else
+                           {
+                            ?>
+                            <?php echo $_SESSION["nombre"]." ".$_SESSION["apellidos"]." "; ?>
+                            <?php
+                           }
+                    ?>
+    
+                </span>
+            </h4>
             <a href="drones.php">
                 <img src="images/Drone.png" width="70px" alt="Ver Drones"/>
             </a>

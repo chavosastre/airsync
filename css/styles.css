@@ -34,7 +34,7 @@
 
 body, html {
 	height: 100%;
-	font-family: Poppins-Regular, sans-serif;
+  font-family: Poppins-Regular, sans-serif;
 }
 
 /*---------------------------------------------*/
@@ -59,6 +59,7 @@ a:hover {
   color: #fc00ff;
   border-color: #fc00ff;
 }
+
 
 /*---------------------------------------------*/
 h1,h2,h3,h4,h5,h6 {
@@ -208,7 +209,7 @@ iframe {
 
 /*------------------------------------------------------------------
 [ Button sign in with ]*/
-.btn-face,
+/* .btn-face,
 .btn-google {
   font-family: Montserrat-SemiBold;
   font-size: 18px;
@@ -236,9 +237,9 @@ iframe {
   transition: all 0.4s;
   position: relative;
   z-index: 1;
-}
+} */
 
-.btn-google::before,
+/* .btn-google::before,
 .btn-face::before {
   content: "";
   display: block;
@@ -259,9 +260,9 @@ iframe {
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
   transition: all 0.4s;
-}
+} */
 
-.btn-face {
+/* .btn-face {
   color: #fff;
   background-color: #3b5998;
 }
@@ -281,9 +282,9 @@ iframe {
   width: 30px;
   margin-right: 15px;
   padding-bottom: 3px;
-}
+} */
 
-.btn-face:hover:before,
+/* .btn-face:hover:before,
 .btn-google:hover:before {
   opacity: 1;
 }
@@ -291,7 +292,7 @@ iframe {
 .btn-face:hover,
 .btn-google:hover {
   color: #fff;
-}
+} */
 
 
 /*------------------------------------------------------------------
