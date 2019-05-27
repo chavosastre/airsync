@@ -8,7 +8,11 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
+<<<<<<< HEAD
             "url": "http://localhost/AlmacenControlHerramientas/almacen/",
+=======
+            "url": "http://localhost/airsync/",
+>>>>>>> 42fceea91a02dfc1dd15bf9960456f2622ea3372
             "webRoot": "${workspaceFolder}"
         }
     ]
